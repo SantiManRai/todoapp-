@@ -1,0 +1,279 @@
+//To Do App
+1. Delete all code from App.js
+
+2. Write a basic code to print Hello World:
+
+import React from 'react';
+import './App.css';
+
+const App=()=> {
+  return (
+    <div >
+      <h1>Hello World</h1>
+      
+    </div>
+  );
+}
+
+export default App;
+
+3. Open terminal:
+
+Ctrl + `
+
+4. Run npm:
+
+npm start
+
+5. Define lists:
+
+import React,{useState} from 'react';
+import './App.css';
+
+//define list:
+const [todo, setTodo] = useState(["Eat", "Code", "Sleep"])
+
+const App=()=> 
+{
+  return (
+    <div >
+      <h1>Todo list</h1>
+      
+    </div>
+  );
+}
+
+export default App;
+
+6. Use map and useState to show the list:
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+ const [todos, setTodos] = useState(["Eat", "Code", "Sleep"])
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <ul>
+        {
+        todos.map((todo)=> <li>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+7. Create a user input:
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+ const [todos, setTodos] = useState(["Eat", "Code", "Sleep"])
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <input type='Text'></input>
+
+      <ul>
+        {
+        todos.map((todo)=> <li>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+8. Create a button Add:
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+ const [todos, setTodos] = useState(["Eat", "Code", "Sleep"])
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <input type='Text'></input>
+      <button>Add</button>
+
+      <ul>
+        {
+        todos.map((todo)=> <li>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+9. Delete all the list:
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+ const [todos, setTodos] = useState([])
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <input type='Text'></input>
+      <button>Add</button>
+
+      <ul>
+        {
+        todos.map((todo)=> <li>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+10. Create a User input list:
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+  const [userInput, setUserInput] = useState(" ")
+  const [todos, setTodos] = useState([])
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <input onChange={(event)=> setUserInput([...todos,event.target.value])} type='Text'></input>
+      <button>Add</button>
+
+      <ul>
+        {
+        todos.map((todo)=> <li>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+11. Create a function When hit the button, list will added:
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+  const [userInput, setUserInput] = useState(" ")
+  const [todos, setTodos] = useState([])
+
+  //Add list function
+  const addData=()=>
+    {
+      setTodos([...todos, userInput]);
+    }
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <input onChange={(event)=> setUserInput([event.target.value])} type='Text'></input>
+      <button onClick={()=> addData()}>Add</button>
+
+      <ul>
+        {
+        todos.map((todo)=> <li>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+12. Error: App.js:22 
+ Warning: Each child in a list should have a unique "key" prop. on the console.
+
+13.Solve: index, key
+
+import React,{ useState } from 'react';
+import './App.css';
+
+
+
+const App=()=> 
+{
+  //define list:
+  const [userInput, setUserInput] = useState(" ")
+  const [todos, setTodos] = useState([])
+
+  //Add list function
+  const addData=()=>
+    {
+      setTodos([...todos, userInput]);
+    }
+
+  return (
+    <div >
+      <h1>Todo list</h1>
+      <input onChange={(event)=> setUserInput([event.target.value])} type='Text'></input>
+      <button onClick={()=> addData()}>Add</button>
+
+      <ul>
+        {
+        todos.map((todo, index)=> <li key={index}>{todo}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+
+14. Add style on App.css:
+
+div
+{
+  text-align: center;
+  background-color: black;
+  color:white;
+}
+
+button
+{
+  cursor: pointer;
+}
+
